@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: helloworld
-          image: nginxdemos/hello:plain-text
+          image: nginxdemos/hello #:plain-text
           ports:
             - containerPort: 80
 ---

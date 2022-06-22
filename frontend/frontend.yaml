@@ -1,7 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: frontend
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: helloworld
+  namespace: frontend
 spec:
   replicas: 1
   selector:
@@ -22,6 +28,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: helloworld
+  namespace: frontend
 spec:
   type: ClusterIP
   ports:

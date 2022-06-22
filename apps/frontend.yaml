@@ -9,7 +9,7 @@ spec:
     namespace: frontend
   project: default
   source:
-    repoURL: https://github.com/squer-solutions/dummy-frontend.git
+    repoURL: ssh://git@github.com/squer-solutions/dummy-frontend.git
     targetRevision: main
     path: manifests
   syncPolicy:

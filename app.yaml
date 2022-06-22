@@ -9,7 +9,7 @@ spec:
     namespace: frontend
   project: default
   source:
-    repoURL: https://github.com/squer-solutions/argo-bfs.git
+    repoURL: https://github.com/squer-solutions/infrastructure-provisioning-workshop.git
     targetRevision: main
     path: frontend
   syncPolicy:

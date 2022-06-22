@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontend
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: frontend
+  project: default
+  source:
+    repoURL: https://github.com/squer-solutions/argo-bfs.git
+    targetRevision: main
+    path: frontend
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

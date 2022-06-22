@@ -19,5 +19,15 @@ expose-frontend:
 show-password:
 	kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 
-bootstrap: create-cluster install-argocd
-	kubectl apply -f app.yaml
+generate-ssh:
+	mkdir -p ./_init/ssh
+ifeq (,$(wildcard ./_init/ssh/repo_read))
+		ssh-keygen -t ed25519 -N "" -C "argocd-repo_read" -f ./_init/ssh/repo_read
+endif
+
+apply-init-manifests: generate-ssh
+	READ_SSH_KEY=$(shell base64 _init/ssh/repo_read) envsubst <_init/repo-creds.yaml | kubectl apply -f -
+	kubectl apply -f _init/app.yaml
+
+bootstrap: create-cluster install-argocd apply-init-manifests
+	

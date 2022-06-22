@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: frontend
+  name: apps
   namespace: argocd
 spec:
   destination:
     name: in-cluster
-    namespace: frontend
+    namespace: apps
   project: default
   source:
     repoURL: https://github.com/squer-solutions/infrastructure-provisioning-workshop.git
-    targetRevision: main
-    path: frontend
+    targetRevision: level1
+    path: apps
   syncPolicy:
     automated:
       selfHeal: true

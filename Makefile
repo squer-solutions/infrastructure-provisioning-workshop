@@ -27,6 +27,7 @@ endif
 
 apply-init-manifests: generate-ssh
 	READ_SSH_KEY=$(shell base64 _init/ssh/repo_read) envsubst <_init/repo-creds.yaml | kubectl apply -f -
+	kubectl apply -f _init/furnishing.yaml
 	kubectl apply -f _init/app.yaml
 
 bootstrap: create-cluster install-argocd apply-init-manifests

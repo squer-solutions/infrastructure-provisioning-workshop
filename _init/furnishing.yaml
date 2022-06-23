@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: furnishing
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: apps
+  project: default
+  source:
+    repoURL: https://github.com/squer-solutions/infrastructure-provisioning-workshop.git
+    targetRevision: level2
+    path: _furnishing
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

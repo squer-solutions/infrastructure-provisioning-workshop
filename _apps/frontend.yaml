@@ -10,8 +10,8 @@ spec:
   project: default
   source:
     repoURL: ssh://git@github.com/squer-solutions/dummy-frontend.git
-    targetRevision: main
-    path: manifests
+    targetRevision: level3
+    path: manifests/local
   syncPolicy:
     automated:
       selfHeal: true

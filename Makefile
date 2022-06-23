@@ -16,8 +16,14 @@ expose-argo:
 expose-frontend:
 	kubectl port-forward svc/helloworld -n frontend 8081:80
 
+expose-dashboard:
+	kubectl port-forward svc/helloworld -n frontend 8081:80
+
 show-password:
 	kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+
+create-dashboard-token:
+	kubectl -n kubernetes-dashboard create token admin-user
 
 generate-ssh:
 	mkdir -p ./_init/ssh

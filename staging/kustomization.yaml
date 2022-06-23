@@ -1,5 +1,8 @@
 bases:
   - ../_apps
 
-patchesStrategicMerge:
-  - patchFrontendEnvironment.yaml
+patches:
+  - path: patchEnvironment.yaml
+    target:
+      kind: Application
+      namespace: argocd

@@ -2,8 +2,8 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt
-  #annotations:
-    #argocd.argoproj.io/sync-wave: "2"
-    #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true #Needed as the CRD for the Cert-manager has to be applied first and without skipping dry run on missing resources we run into deadlock
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true #Needed as the CRD for the Cert-manager has to be applied first and without skipping dry run on missing resources we run into deadlock
 spec:
   selfSigned: {}

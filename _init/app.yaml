@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/squer-solutions/infrastructure-provisioning-workshop.git
-    targetRevision: level1
+    targetRevision: level2
     path: apps
   syncPolicy:
     automated:

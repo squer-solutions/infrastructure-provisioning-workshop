@@ -1,3 +1,4 @@
 resources:
   - ingress-nginx.yaml
   - cert-manager.yaml
+  - letsencrypt.yaml

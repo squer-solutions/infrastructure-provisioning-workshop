@@ -1,0 +1,5 @@
+bases:
+  - ../_apps
+
+patchesStrategicMerge:
+  - patchFrontendEnvironment.yaml

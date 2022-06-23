@@ -29,8 +29,8 @@ spec:
   project: default
   source:
     repoURL: ssh://git@github.com/squer-solutions/infrastructure-provisioning-workshop.git
-    targetRevision: level2
-    path: _furnishing
+    targetRevision: level3
+    path: $CLUSTER_NAME/furnishing
   syncPolicy:
     automated:
       selfHeal: true

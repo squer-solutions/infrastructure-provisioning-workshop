@@ -26,9 +26,12 @@ ifeq (,$(wildcard ./_init/ssh/repo_read))
 endif
 
 apply-init-manifests: generate-ssh
+ifndef CLUSTER_NAME
+	$(error CLUSTER_NAME is undefined)
+endif
 	READ_SSH_KEY=$(shell base64 _init/ssh/repo_read) envsubst <_init/repo-creds.yaml | kubectl apply -f -
-	kubectl apply -f _init/furnishing.yaml
-	kubectl apply -f _init/app.yaml
+	envsubst <_init/furnishing.yaml | kubectl apply -f -
+	envsubst <_init/app.yaml | kubectl apply -f -
 
 bootstrap: create-cluster install-argocd apply-init-manifests
 	

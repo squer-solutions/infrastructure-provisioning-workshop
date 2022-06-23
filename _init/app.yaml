@@ -10,8 +10,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/squer-solutions/infrastructure-provisioning-workshop.git
-    targetRevision: level2
-    path: apps
+    targetRevision: level3
+    path: $CLUSTER_NAME
   syncPolicy:
     automated:
       selfHeal: true

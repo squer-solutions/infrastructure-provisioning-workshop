@@ -1,4 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: furnishing
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  # Allow writing all types of Kubernetes resources
+  - group: '*'
+    kind: '*'
+  destinations:
+  # Allow to deploy to same cluster, all namespaces.
+  - namespace: '*'
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://charts.jetstack.io
+  - https://kubernetes.github.io/ingress-nginx
+  - ssh://git@github.com/squer-solutions/infrastructure-provisioning-workshop.git
+---
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: furnishing
@@ -9,7 +28,7 @@ spec:
     namespace: apps
   project: default
   source:
-    repoURL: https://github.com/squer-solutions/infrastructure-provisioning-workshop.git
+    repoURL: ssh://git@github.com/squer-solutions/infrastructure-provisioning-workshop.git
     targetRevision: level2
     path: _furnishing
   syncPolicy:
